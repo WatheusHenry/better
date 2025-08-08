@@ -72,7 +72,7 @@ function handleNext(): void {
   padding: 0 3rem;
 }
 
-.header { text-align: center; padding-top: 64px; }
+.header { text-align: center; padding-top: 40px; }
 .title {
   font-family: var(--ion-font-family);
   font-weight: 800;

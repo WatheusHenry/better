@@ -145,7 +145,7 @@ function openBet(bet: Bet): void {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .topbar {
