@@ -41,3 +41,10 @@ const app = createApp(App)
 router.isReady().then(() => {
   app.mount('#app');
 });
+
+// PWA: registra o service worker quando disponível
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
