@@ -1,0 +1,8 @@
+{
+  "name": "Better",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite",
+  "id": "eefe931b"
+}
