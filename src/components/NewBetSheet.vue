@@ -2,7 +2,7 @@
   <ion-modal
     :is-open="isOpen"
     @didDismiss="handleDismiss"
-    :breakpoints="[0, 0.45]"
+    :breakpoints="[0, 0.95]"
     :initialBreakpoint="0.95"
     handle-behavior="cycle"
     class="new-bet-modal"
