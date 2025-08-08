@@ -7,8 +7,10 @@
             <IonIcon :icon="chevronBackOutline" />
           </button>
           <div class="who" v-if="bet.participants?.length">
-            <span class="label">Apostado com</span>
-            <span class="name">{{ firstParticipant }}</span>
+            <div style="display: flex; flex-direction: column; text-align: end;">
+              <span class="label">Apostado com</span>
+              <span class="name">{{ firstParticipant }}</span>
+            </div>
             <div class="avatars">
               <img
                 v-for="(p, idx) in bet.participants"
@@ -21,11 +23,11 @@
               />
             </div>
           </div>
-          <div class="date">{{ bet.dateLabel }}</div>
         </header>
-
+        
         <section class="title">
           <h1>{{ bet.title }}</h1>
+          <div class="date">{{ bet.dateLabel }}</div>
         </section>
 
         <section class="week">
@@ -125,8 +127,8 @@ function formatCurrency(value: number): string {
 .who { display: flex; align-items: center; gap: 6px; }
 .label { color: #8b8b8b; font-size: 12px; }
 .name { font-weight: 600; color: #6b7280; font-size: 12px; }
-.avatars { position: relative; height: 28px; min-width: 46px; }
-.avatar { position: absolute; top: 0; width: 28px; height: 28px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.avatars { position: relative; height: 2.5rem; min-width: 46px; }
+.avatar { position: absolute; top: 0; width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .date { color: #9aa1a8; font-size: 12px; }
 
 .title h1 { margin: 0; font-size: 26px; color: #1f1f1f; font-weight: 800; }
