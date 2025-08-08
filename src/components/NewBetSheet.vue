@@ -202,9 +202,9 @@ function handleDismiss(): void {
 
 .days { display: flex; gap: 10px; flex-wrap: nowrap; }
 .day {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
   border: 1px dashed #d7d7d7;
   background: #fff;
   color: #a9a9a9;
