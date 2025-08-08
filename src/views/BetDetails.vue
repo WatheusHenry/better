@@ -4,7 +4,7 @@
       <div class="wrapper" v-if="bet">
         <header class="header">
           <button class="back" @click="goBack" aria-label="Voltar">
-            <ion-icon name="chevron-back-outline" />
+            <IonIcon :icon="chevronBackOutline" />
           </button>
           <div class="who" v-if="bet.participants?.length">
             <span class="label">Apostado com</span>
@@ -37,8 +37,8 @@
               class="dot"
               :class="{ done: bet.completedDays.includes(idx), pending: bet.pendingDays.includes(idx) }"
             >
-              <ion-icon v-if="bet.completedDays.includes(idx)" :icon="checkmark" class="dot-icon" />
-              <ion-icon v-else-if="bet.pendingDays.includes(idx)" :icon="timeOutline" class="dot-icon" />
+              <IonIcon v-if="bet.completedDays.includes(idx)" :icon="checkmark" class="dot-icon" />
+              <IonIcon v-else-if="bet.pendingDays.includes(idx)" :icon="timeOutline" class="dot-icon" />
             </span>
           </div>
         </section>
@@ -68,20 +68,23 @@
           </div>
         </section>
 
-        <section class="actions">
-          <button class="disabled">Você já validou hoje</button>
-        </section>
+        <!-- Footer fixo movido para <ion-footer> -->
       </div>
     </ion-content>
+    <ion-footer class="footer" v-if="bet">
+      <div class="footer-inner">
+        <button class="disabled">Você já validou hoje</button>
+      </div>
+    </ion-footer>
   </ion-page>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonPage, IonIcon } from '@ionic/vue'
+import { IonContent, IonPage, IonIcon, IonFooter } from '@ionic/vue'
 import { useRoute, useRouter } from 'vue-router'
 import { computed, ref } from 'vue'
 import { getBet, type Bet } from '@/services/betCache'
-import { checkmark, timeOutline } from 'ionicons/icons'
+import { checkmark, timeOutline, chevronBackOutline } from 'ionicons/icons'
 
 const route = useRoute()
 const router = useRouter()
@@ -106,7 +109,19 @@ function formatCurrency(value: number): string {
 .details-content::part(background) { background: #ffffff; }
 .wrapper { padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 16px; }
 .header { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
-.back { background: transparent; border: none; font-size: 22px; }
+.back {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: #1f1f1f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+.back:active { background: #f2f2f2; }
 .who { display: flex; align-items: center; gap: 6px; }
 .label { color: #8b8b8b; font-size: 12px; }
 .name { font-weight: 600; color: #6b7280; font-size: 12px; }
@@ -136,8 +151,16 @@ function formatCurrency(value: number): string {
 .proof-image { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; }
 .proof-item { display: flex; align-items: center; gap: 8px; border: 1px solid #e8e8e8; border-radius: 16px; background: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.04); padding: 10px 12px; }
 
-.actions { margin-top: 8px; }
-.actions .disabled { width: 100%; height: 52px; border-radius: 14px; border: none; background: #e0e0e0; color: #8b8b8b; font-weight: 800; }
+.footer { 
+  --background: transparent; 
+  --box-shadow: none; 
+  --border-color: transparent; 
+  --border-width: 0;
+  box-shadow: none;
+  border: 0;
+}
+.footer-inner { padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: #fff; }
+.footer .disabled { width: 100%; height: 52px; border-radius: 14px; border: none; background: #e0e0e0; color: #8b8b8b; font-weight: 800; }
 </style>
 
 
